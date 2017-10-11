@@ -1,0 +1,24 @@
+#/bin/bash
+#by Aze Santos
+
+CONTINUE=true
+
+while [[ $CONTINUE == true ]]
+do
+
+  NUMBER=$(( $RANDOM % 4 ))
+  OUTPUT=(OK WARNING CRITICAL UNKNOWN)
+  echo ${OUTPUT[NUMBER]}
+  sleep 15
+
+
+if [ ${OUTPUT[NUMBER]} == CRITICAL ]
+then CONTINUE=false
+
+  while [[ $CONTINUE == false ]]
+  do
+      echo "CRITICAL"
+      sleep 15
+      done
+fi
+done
