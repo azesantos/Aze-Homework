@@ -1,0 +1,14 @@
+#/bin/bash
+# by Aze Santos
+
+OUTPUT=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' http://172.31.8.156)
+
+if [ $OUTPUT -ge 200 -a $OUTPUT -le 299 ];
+  then exit 0
+elif [ $OUTPUT -ge 300 -a $OUTPUT -le 399 ]; 
+  then exit 1
+elif [ $OUTPUT -ge 400 -a $OUTPUT -le 499 ];
+  then exit 2
+else
+  exit 3
+fi
