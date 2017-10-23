@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ "$NAGIOS_SERVICESTATE" = "CRITICAL" && "$NAGIOS_SERVICESTATETYPE" = "SOFT" ]]
+
+then
+   /usr/local/nagios/libexec/check_nrpe -H $NAGIOS_HOSTADDRESS -c eh_restart_daemon_print
+
+fi

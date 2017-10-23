@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 # by Aze Santos
 
 LOGFILE=('/tmp/daemon_print.log')
@@ -10,12 +10,16 @@ tail -1 $LOGFILE | grep -wo -e OK -e WARNING -e CRITICAL -e UNKNOWN
 
 OUTPUT=$(PARSELOG)
 
-if [ $OUTPUT == OK ];
-  then exit 0
-elif [ $OUTPUT == WARNING ];
-  then exit 1
-elif [ $OUTPUT == CRITICAL ];
-  then exit 2
+if [ $OUTPUT = OK ];
+  then echo OK
+  exit 0
+elif [ $OUTPUT = WARNING ];
+  then echo WARNING
+  exit 1
+elif [ $OUTPUT = CRITICAL ];
+  then echo CRITICAL
+  exit 2
 else
+  echo UNKNOWN
   exit 3
 fi
